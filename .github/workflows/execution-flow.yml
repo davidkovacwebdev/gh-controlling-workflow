@@ -76,3 +76,12 @@ jobs:
         run: ls
       - name: Deploy
         run: echo "Deploying..."
+  report:
+    if: failure()
+    #basically, failure returns true if any other job failed, therefore, with failure added, if any jobs failed to execute, this one will still rune and vice-versa
+    runs-on:  ubuntu-latest
+    steps:
+      - name: Output information
+        run:  |
+          echo "Something went wong"
+          echo "${{ github  }}"
